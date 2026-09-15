@@ -1,0 +1,95 @@
+<!-- Ejercicio 2.11 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Ejercicio 2.11</title>
+</head>
+
+<body>
+
+<h1>2.11 Verdadero o falso</h1>
+
+<p>Indique cuál de los siguientes enunciados es verdadero y cuál es falso.
+Si es falso, explique por qué.</p>
+
+<p><b>a)</b> Un documento de HTML5 válido no puede contener letras mayúsculas en nombres de elementos.</p>
+
+<input type="radio" name="a" value="verdadero"> Verdadero<br>
+<input type="radio" name="a" value="falso"> Falso
+
+<p><b>b)</b> Los documentos de HTML5 pueden tener la extensión de archivo .htm.</p>
+
+<input type="radio" name="b" value="verdadero"> Verdadero<br>
+<input type="radio" name="b" value="falso"> Falso
+
+<p><b>c)</b> &amp;less; es la referencia a entidad de carácter para el carácter menor que (&lt;).</p>
+
+<input type="radio" name="c" value="verdadero"> Verdadero<br>
+<input type="radio" name="c" value="falso"> Falso
+
+<p><b>d)</b> En un documento de HTML5 válido, &lt;li&gt; puede anidarse dentro de etiquetas &lt;ol&gt; o &lt;ul&gt;.</p>
+
+<input type="radio" name="d" value="verdadero"> Verdadero<br>
+<input type="radio" name="d" value="falso"> Falso
+
+<br><br>
+
+<input type="button" value="Calificar" onclick="calificar()">
+
+<p id="resultado"></p>
+
+<script>
+
+function calificar() {
+
+   let respuestas = ["falso", "verdadero", "falso", "verdadero"];
+
+   let explicaciones = [
+      "HTML5 no distingue entre mayúsculas y minúsculas en los nombres de elementos, aunque se recomienda usar minúsculas.",
+      "Los documentos de HTML5 pueden utilizar la extensión .htm.",
+      "La referencia correcta para el carácter menor que (<) es &amp;lt;, no &amp;less;.",
+      "El elemento <li> puede anidarse dentro de <ol> o <ul>."
+   ];
+
+   let correctas = 0;
+   let resultado = "";
+
+   for (let i = 0; i < 4; i++) {
+
+      let letra = String.fromCharCode(97 + i);
+
+      let respuesta = document.querySelector(
+         'input[name="' + letra + '"]:checked'
+      );
+
+      if (respuesta && respuesta.value == respuestas[i]) {
+
+         correctas++;
+
+         resultado += "<p>" +
+            letra + ") Correcto. " +
+            explicaciones[i] +
+            "</p>";
+
+      } else {
+
+         resultado += "<p>" +
+            letra + ") Incorrecto. La respuesta correcta es " +
+            respuestas[i] + ". " +
+            explicaciones[i] +
+            "</p>";
+      }
+   }
+
+   document.getElementById("resultado").innerHTML =
+      "<b>Resultado: " + correctas + " de 4</b>" +
+      resultado;
+}
+
+</script>
+
+</body>
+</html>
+

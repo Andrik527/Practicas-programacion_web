@@ -1,0 +1,96 @@
+<!-- Ejercicio 2.12 -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Ejercicio 2.12</title>
+</head>
+
+<body>
+
+<h1>2.12 Complete las oraciones</h1>
+
+<p><b>a)</b> Los comentarios de HTML5 comienzan con ______ y terminan con ______.</p>
+
+<input type="radio" name="a" value="correcto"> &lt;!-- y --&gt;<br>
+<input type="radio" name="a" value="incorrecto"> &lt; y &gt;<br>
+<input type="radio" name="a" value="incorrecto"> /* y */<br>
+
+<p><b>b)</b> En HTML5, los valores de los atributos pueden ir encerrados entre ______.</p>
+
+<input type="radio" name="b" value="correcto"> comillas simples o dobles<br>
+<input type="radio" name="b" value="incorrecto"> solamente comillas dobles<br>
+<input type="radio" name="b" value="incorrecto"> paréntesis<br>
+
+<p><b>c)</b> ______ es la referencia a entidad de carácter para un signo &amp;.</p>
+
+<input type="radio" name="c" value="correcto"> &amp;amp;<br>
+<input type="radio" name="c" value="incorrecto"> &amp;and;<br>
+<input type="radio" name="c" value="incorrecto"> &amp;sign;<br>
+
+<p><b>d)</b> El elemento ______ puede usarse para crear texto en negrita.</p>
+
+<input type="radio" name="d" value="correcto"> strong<br>
+<input type="radio" name="d" value="incorrecto"> bold<br>
+<input type="radio" name="d" value="incorrecto"> black<br>
+
+<br>
+
+<input type="button" value="Calificar" onclick="calificar()">
+
+<p id="resultado"></p>
+
+<script>
+
+function calificar() {
+
+   let respuestas = ["correcto", "correcto", "correcto", "correcto"];
+
+   let explicaciones = [
+      "Los comentarios comienzan con <!-- y terminan con -->.",
+      "Los atributos pueden utilizar comillas simples o dobles.",
+      "&amp;amp; representa el carácter &.",
+      "strong se utiliza para indicar texto con gran importancia y normalmente se muestra en negrita."
+   ];
+
+   let correctas = 0;
+   let resultado = "";
+
+   for (let i = 0; i < 4; i++) {
+
+      let letra = String.fromCharCode(97 + i);
+
+      let respuesta = document.querySelector(
+         'input[name="' + letra + '"]:checked'
+      );
+
+      if (respuesta && respuesta.value == "correcto") {
+
+         correctas++;
+
+         resultado += "<p>" +
+            letra + ") Correcto. " +
+            explicaciones[i] +
+            "</p>";
+
+      } else {
+
+         resultado += "<p>" +
+            letra + ") Incorrecto. " +
+            "La respuesta correcta es la primera opción. " +
+            explicaciones[i] +
+            "</p>";
+      }
+   }
+
+   document.getElementById("resultado").innerHTML =
+      "<b>Resultado: " + correctas + " de 4</b>" +
+      resultado;
+}
+
+</script>
+
+</body>
+</html>

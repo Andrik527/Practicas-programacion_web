@@ -1,0 +1,121 @@
+<!-- Ejercicio 2.1 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 2.1, 2.2</title>
+</head>
+
+<body>
+
+<h1>Ejercicios de autoevaluación</h1>
+
+<h2>2.2 Complete las oraciones</h2>
+
+<form>
+
+<p><b>a)</b> El elemento ______ inserta una regla horizontal.</p>
+
+<input type="radio" name="a" value="hr"> hr<br>
+<input type="radio" name="a" value="br"> br<br>
+<input type="radio" name="a" value="line"> line<br>
+
+<p><b>b)</b> Para marcar un superíndice se utiliza ______ y para marcar un subíndice se utiliza ______.</p>
+
+<input type="radio" name="b" value="correcto"> sup, sub<br>
+<input type="radio" name="b" value="incorrecto"> sub, sup<br>
+<input type="radio" name="b" value="incorrecto"> up, down<br>
+
+<p><b>c)</b> El elemento de encabezado menos importante es ______ y el más importante es ______.</p>
+
+<input type="radio" name="c" value="correcto"> h6, h1<br>
+<input type="radio" name="c" value="incorrecto"> h1, h6<br>
+<input type="radio" name="c" value="incorrecto"> h5, h2<br>
+
+<p><b>d)</b> El elemento ______ marca una lista desordenada.</p>
+
+<input type="radio" name="d" value="ul"> ul<br>
+<input type="radio" name="d" value="ol"> ol<br>
+<input type="radio" name="d" value="li"> li<br>
+
+<p><b>e)</b> El elemento ______ marca un párrafo.</p>
+
+<input type="radio" name="e" value="p"> p<br>
+<input type="radio" name="e" value="paragraph"> paragraph<br>
+<input type="radio" name="e" value="text"> text<br>
+
+<p><b>f)</b> El atributo ______ en un elemento input inserta un botón que restablece el formulario.</p>
+
+<input type="radio" name="f" value="reset"> type="reset"<br>
+<input type="radio" name="f" value="submit"> type="submit"<br>
+<input type="radio" name="f" value="button"> type="button"<br>
+
+<p><b>g)</b> El elemento ______ marca una fila de una tabla.</p>
+
+<input type="radio" name="g" value="tr"> tr<br>
+<input type="radio" name="g" value="td"> td<br>
+<input type="radio" name="g" value="table"> table<br>
+
+<p><b>h)</b> Los ______ se usan como caracteres de enmascarado en un cuadro de contraseña.</p>
+
+<input type="radio" name="h" value="asteriscos"> Asteriscos (*)<br>
+<input type="radio" name="h" value="guiones"> Guiones (-)<br>
+<input type="radio" name="h" value="puntos"> Puntos (.)<br>
+
+<br>
+
+<input type="button" value="Calificar" onclick="calificar()">
+
+<p id="resultado"></p>
+
+</form>
+
+<script>
+
+function calificar() {
+
+    let respuestas = ["hr", "correcto", "correcto", "ul", "p", "reset", "tr", "asteriscos"];
+
+    let nombres = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
+    let explicaciones = [
+        "hr crea una regla horizontal.",
+        "sup es superíndice y sub es subíndice.",
+        "h6 es el encabezado menos importante y h1 el más importante.",
+        "ul crea una lista desordenada.",
+        "p crea un párrafo.",
+        "type=\"reset\" restablece el contenido del formulario.",
+        "tr representa una fila de una tabla.",
+        "Los asteriscos (*) ocultan los caracteres de una contraseña."
+    ];
+
+    let correctas = 0;
+    let texto = "";
+
+    for (let i = 0; i < nombres.length; i++) {
+
+        let respuesta = document.querySelector(
+            'input[name="' + nombres[i] + '"]:checked'
+        );
+
+        if (respuesta && respuesta.value == respuestas[i]) {
+            correctas++;
+            texto += "<p>" + nombres[i] + ") Correcto. " +
+                     explicaciones[i] + "</p>";
+        } else {
+            texto += "<p>" + nombres[i] + ") Incorrecto. " +
+                     "La respuesta correcta es " + respuestas[i] +
+                     ". " + explicaciones[i] + "</p>";
+        }
+    }
+
+    document.getElementById("resultado").innerHTML =
+        "Resultado: " + correctas + " de 8<br>" + texto;
+}
+
+</script>
+
+</body>
+</html>
+```
